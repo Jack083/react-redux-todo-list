@@ -1,39 +1,80 @@
-.App {
+html {
+  box-sizing: border-box;
+}
+
+body {
+ font-family:
+ -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
+  Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+ line-height: 1.4;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #333;
+  height: 90vh;
+  overflow-y: auto;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 80px;
+}
+.todo-filter{
+  list-style: none;
+  margin-bottom: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.filter {
+  width: 32%;
+  border: none;
+  background-color: cornflowerblue;
+  margin: 3px;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.todo-input {
+  width: 100%;
+  text-align: center;
+}
+.todo-list {
+  list-style: none;
+  margin-bottom: 20px;
+  padding-inline-start: 0;
+}
+
+.todo-item {
+  margin-bottom: 10px;
+  width: 100%;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  text-align: left;
+}
+.delete-todo {
+  background-color: #DC143C;
+  color: white;
+  cursor: pointer;
+  margin-top: 5px;
+  border: none;
+  border-radius: 4px;
+  float: right;
+}
+.complete-todo {
+  margin-right: 20px;
+}
+.submit-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.hide {
+  display: none;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px)
-  }
-  100% {
-    transform: translateY(0px)
-  }
+:checked + span{
+  text-decoration: line-through;
 }
