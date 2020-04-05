@@ -14,7 +14,8 @@ import { CONSTANTS } from './constants'
 
 
 function* fetchTodoListSaga() {
-    yield takeLatest(CONSTANTS.FETCH_TODOLIST.REQUEST, function* () {
+    yield takeLatest(CONSTANTS.FETCH_TODOLIST.REQUEST, function* (action) {
+        console.log(action)
         try {
             const todoList = yield call(TodoListApi.list)
             yield put(fectchTodoSucceed(todoList))
@@ -26,6 +27,7 @@ function* fetchTodoListSaga() {
 
 function* addTodoSaga() {
     yield takeLatest(CONSTANTS.ADD_TODO.REQUEST, function* (action) {
+        console.log(action)
         const { name } = action
         try {
             const newTodo = yield call(TodoListApi.addTodo, name)
@@ -39,6 +41,7 @@ function* addTodoSaga() {
 function* deleteTodoSaga() {
     yield takeLatest(CONSTANTS.DELETE_TODO.REQUEST, function* (action) {
         const { id } = action
+        console.log(action)
         try {
             yield call(TodoListApi.deleteTodo, id)
             yield put(deleteTodoSucceed(id))
@@ -54,7 +57,6 @@ function* toggleTodoSaga() {
         console.log(action)
         try {
             const updatedTodo = yield call(TodoListApi.toggleTodo, id, completed)
-            console.log(updatedTodo)
             yield put(toggleTodoSucceed({ ...updatedTodo }))
         } catch (error) {
             yield put(toggleTodoFailed(error))

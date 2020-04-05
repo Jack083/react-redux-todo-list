@@ -3,8 +3,10 @@ import { CONSTANTS } from '../constants'
 const todos = (state = [], action) => {
     switch (action.type) {
         case CONSTANTS.FETCH_TODOLIST.SUCCEED:
+            console.log(action)
             return action.todoList
         case CONSTANTS.ADD_TODO.SUCCEED:
+            console.log(action)
             return [
                 ...state,
                 {

@@ -1,38 +1,26 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class AddTodo extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            newTodoName: ''
-        }
-    }
-    handleChange = (event) => {
+function AddTodo({ handleAddTodo }) {
+    const [newTodoName, setNewTodoName] = useState('');
+    const handleChange = (event) => {
         const newTodoName = event.target.value
-        this.setState({ newTodoName })
+        setNewTodoName(newTodoName)
     }
-
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        const { newTodoName } = this.state
         if (newTodoName === '') {
             return
         }
-        this.setState({
-            newTodoName: '',
-        })
-        this.props.addTodo(newTodoName);
-
+        setNewTodoName('')
+        handleAddTodo(newTodoName);
     }
-    render() {
-        return (
-            <form className="submit-form" onSubmit={this.handleSubmit}>
-                <input autoFocus type="text" placeholder="E.g. Get beat by Jack in Foosball" className="todo-input"
-                    value={this.state.newTodoName} onChange={this.handleChange}
-                />
-            </form>
-        )
-    }
+    return (
+        <form className="submit-form" onSubmit={handleSubmit}>
+            <input autoFocus type="text" placeholder="E.g. Get beat by Jack in Foosball" className="todo-input"
+                value={newTodoName} onChange={handleChange}
+            />
+        </form>
+    )
 }
 
 export default AddTodo
